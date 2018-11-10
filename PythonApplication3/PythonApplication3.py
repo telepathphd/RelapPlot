@@ -39,7 +39,10 @@ def sub_plt(x,y,labelname,filename,ylabel,xrange):
     plt.legend(prop={'size':15},  loc='lower right')
     if len(y[1])>3:
         plt.legend(loc='lower right',prop={'size':11})
-    plt.savefig(filename,bbox_inches='tight',pad_inches=0.00)
+    fig = plt.gcf()
+    fig.set_size_inches(2*3.346, 2*2.362)
+    fig.savefig(filename,bbox_inches='tight',pad_inches=0.00)    
+    plt.close('all')
 
 def mkdir(path):
     floder = os.path.exists(path)
@@ -166,11 +169,10 @@ def ppp(data,flag,filename):
         legend_name=['堆芯']
         p=data[:,index]-273.15
     else:
-        print('Unexpected plot type. No plot created.')    
+        print('Unexpected plot type. No plot created.')
     mkdir(path)
     sub_plt(data[:,0]/8.6,p,legend_name,filename+'.pdf',ylabel_name,0)
     return p
-
  
 def listdir(path,FP,Condition,num):
     list_name = []
@@ -222,7 +224,5 @@ for i1 in range(0,4) : # 功率水平（10，20，50，100）4个
         for i3 in range(0,15): #参数响应图14张
             if i3 < 10:
                 ppp(data1,i3+1,path+'\\figs\\'+str(fp)+'c'+str(i2+1)+'_'+str(i3+1))
-                plt.close('all')
             else:
                 ppp(data2,i3+1,path+'\\figs\\'+str(fp)+'c'+str(i2+1)+'_'+str(i3+1))
-                plt.close('all')
