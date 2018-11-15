@@ -186,7 +186,7 @@ def ppp(data,flag,filename):
         legend_name = ['堆芯']
         p = data[:,index] - 273.15
     elif flag == 16:
-        p=data[:,6]
+        p = data[:,6]
         name = '棒位'
         ylabel_name = 'cm'
         legend_name = ['控制棒']
@@ -195,11 +195,16 @@ def ppp(data,flag,filename):
         rho2height = interp1d(breakPoints_Rho,lookUpTable_rodHeight, kind='cubic')
         # np.gradient(data) 求导数
         p = rho2height(data[:,[6]])
-        #p=np.transpose(np.vstack((p,data[:,6])))
+        #temp = np.array(p)
+        #temp = np.gradient(data[:,6])
+        #temp = list(list(i) for i in zip(temp))
+        #temp = np.hstack((p,temp))
+        #temp = list(list(i) for i in zip(temp))
+        #p=temp
         #p = np.transpose(np.vstack((data[:,5],data[:,6])))
     else:
         print('Unexpected plot type. No plot created.')
-    mkdir(path)
+    #mkdir(path)
     sub_plt(data[:,0] / 8.6,p,legend_name,filename + '.png',ylabel_name,0)
     return p
 
@@ -215,15 +220,18 @@ def listdir(path,FP,Condition,num):
     data = import_data(names,num)
     return data
 
-path = 'C:\\AppData\\relapdata\\p2'
-mkdir(path + '\\figs')
-data1 = import_data(path + '\\1.txt',1)
-data2 = import_data(path + '\\2.txt',2)
-for i3 in range(14,16):
+path = ''#'C:\\AppData\\relapdata\\p2'
+#mkdir(path + '\\figs')
+data1 = import_data(path + '1.txt',1)
+data2 = import_data(path + '2.txt',2)
+print('begin')
+for i3 in range(0,16):
+    print(str(i3 + 1) + '/16')
     if i3 < 10:
-        ppp(data1,i3 + 1,path + '\\figs\\' + str(i3 + 1))
+        ppp(data1,i3 + 1,path + 'Fig' + str(i3 + 1))
     else:
-        ppp(data2,i3 + 1,path + '\\figs\\' + str(i3 + 1))
+        ppp(data2,i3 + 1,path + 'Fig' + str(i3 + 1))
+print('figures plotted')
 #后续选择下是开环跑4种功率水平还是只给1、2两个文件绘图
 #for i1 in range(0,4) : # 功率水平（10，20，50，100）4个
 #    if i1 == 0:

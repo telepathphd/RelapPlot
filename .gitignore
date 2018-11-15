@@ -259,3 +259,25 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/PythonApplication3/build/PythonApplication3
+/PythonApplication3/dist/9.png
+/PythonApplication3/dist/8.png
+/PythonApplication3/dist/7.png
+/PythonApplication3/dist/6.png
+/PythonApplication3/dist/5.png
+/PythonApplication3/dist/4.png
+/PythonApplication3/dist/3.png
+/PythonApplication3/dist/2.TXT
+/PythonApplication3/dist/2.png
+/PythonApplication3/dist/16.png
+/PythonApplication3/dist/15.png
+/PythonApplication3/dist/14.png
+/PythonApplication3/dist/13.png
+/PythonApplication3/dist/12.png
+/PythonApplication3/dist/11.png
+/PythonApplication3/dist/10.png
+/PythonApplication3/dist/1.TXT
+/PythonApplication3/dist/1.png
+/PythonApplication3/2.TXT
+/PythonApplication3/1.TXT
+/PythonApplication3/PythonApplication3.spec
